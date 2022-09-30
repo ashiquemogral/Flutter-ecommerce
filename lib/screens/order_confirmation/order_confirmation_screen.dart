@@ -26,7 +26,7 @@ class OrderConfirmation extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: Colors.black,
+              color: Colors.white,
               width: double.infinity,
               height: 300,
             )
