@@ -7,6 +7,7 @@ import 'package:flutter_ecommerce_app/config/theme.dart';
 import 'package:flutter_ecommerce_app/repositories/category/category_repository.dart';
 import 'package:flutter_ecommerce_app/repositories/checkout/checkout_repository.dart';
 import 'package:flutter_ecommerce_app/repositories/product/product_repository.dart';
+import 'package:flutter_ecommerce_app/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:flutter_ecommerce_app/simple_bloc_observer.dart';
 
 import 'screens/screens.dart';
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
         // initialRoute: SplashScreen.routeName,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: OrderConfirmation.routeName,
       ),
     );
   }
