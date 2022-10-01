@@ -24,6 +24,7 @@ class OrderSummaryProductCard extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
+
           Expanded(
             flex: 2,
             child: Column(
