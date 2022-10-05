@@ -49,30 +49,87 @@ class CheckoutScreen extends StatelessWidget {
                   'CUSTOMER INFORMATION',
                   style: Theme.of(context).textTheme.headline3,
                 ),
-                _builTextFormField((value) {
-                  context
-                      .read<CheckoutBloc>()
-                      .add(UpdateCheckout(email: value));
-                }, context, 'Email'),
-                _builTextFormField((value){
-                  context.read<CheckoutBloc>().add(UpdateCheckout(fullName: value));
-                }, context, 'Full Name'),
+                CustomTextFormField(
+                  title: 'Email',
+                  onChanged: (value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(email: value));
+                  },
+                ),
+                // _builTextFormField((value) {
+                //   context
+                //       .read<CheckoutBloc>()
+                //       .add(UpdateCheckout(email: value));
+                // }, context, 'Email'),
+                CustomTextFormField(
+                  title: 'Full Name',
+                  onChanged: (value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(fullName: value));
+                  },
+                ),
+                // _builTextFormField((value) {
+                //   context
+                //       .read<CheckoutBloc>()
+                //       .add(UpdateCheckout(fullName: value));
+                // }, context, 'Full Name'),
                 Text(
                   'DELIVERY INFORMATION',
                   style: Theme.of(context).textTheme.headline3,
                 ),
-                _builTextFormField((value){
-                  context.read<CheckoutBloc>().add(UpdateCheckout(address: value));
-                }, context, 'Address'),
-                _builTextFormField((value){
-                  context.read<CheckoutBloc>().add(UpdateCheckout(city: value));
-                }, context, 'City'),
-                _builTextFormField((value){
-                  context.read<CheckoutBloc>().add(UpdateCheckout(country: value));
-                }, context, 'Country'),
-                _builTextFormField((value){
-                  context.read<CheckoutBloc>().add(UpdateCheckout(zipCode: value));
-                }, context, 'Zip Code'),
+
+                CustomTextFormField(
+                  title: 'Address',
+                  onChanged: (value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(address: value));
+                  },
+                ),
+                // _builTextFormField((value) {
+                //   context
+                //       .read<CheckoutBloc>()
+                //       .add(UpdateCheckout(address: value));
+                // }, context, 'Address'),
+                CustomTextFormField(
+                  title: 'City',
+                  onChanged: (value) {
+                    context.read<CheckoutBloc>().add(UpdateCheckout(city: value));
+                  },
+                ),
+                // _builTextFormField((value) {
+                //   context.read<CheckoutBloc>().add(UpdateCheckout(city: value));
+                // }, context, 'City'),
+
+                CustomTextFormField(
+                  title: 'Country',
+                  onChanged: (value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(country: value));
+                  },
+                ),
+                // _builTextFormField((value) {
+                //   context
+                //       .read<CheckoutBloc>()
+                //       .add(UpdateCheckout(country: value));
+                // }, context, 'Country'),
+
+                CustomTextFormField(
+                  title: 'Zip Code',
+                  onChanged: (value) {
+                    context
+                        .read<CheckoutBloc>()
+                        .add(UpdateCheckout(zipCode: value));
+                  },
+                ),
+                // _builTextFormField((value) {
+                //   context
+                //       .read<CheckoutBloc>()
+                //       .add(UpdateCheckout(zipCode: value));
+                // }, context, 'Zip Code'),
                 SizedBox(height: 20),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -83,12 +140,17 @@ class CheckoutScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Center(
-                        child: Text(
-                          'SELECT A PAYMENT METHOD',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline3!
-                              .copyWith(color: Colors.white),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/payment-selection');
+                          },
+                          child: Text(
+                            'SELECT A PAYMENT METHOD',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline3!
+                                .copyWith(color: Colors.white),
+                          ),
                         ),
                       ),
                       IconButton(
@@ -113,41 +175,6 @@ class CheckoutScreen extends StatelessWidget {
             return Text('Something went wrong');
           }
         }),
-      ),
-    );
-  }
-
-  Padding _builTextFormField(
-    Function(String)? onChanged,
-    BuildContext context,
-    String labelText,
-  ) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 75,
-            child: Text(
-              labelText,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-          Expanded(
-            child: TextFormField(
-              onChanged: onChanged,
-              decoration: InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.only(left: 10),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
